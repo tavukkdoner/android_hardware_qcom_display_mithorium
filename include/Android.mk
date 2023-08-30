@@ -5,6 +5,7 @@ include $(CLEAR_VARS)
 # Legacy header copy. This is deprecated.
 # Modules using these headers should shift to using
 # LOCAL_HEADER_LIBRARIES := display_headers
+ifeq ($(BUILD_BROKEN_USES_BUILD_COPY_HEADERS),true)
 LOCAL_VENDOR_MODULE           := true
 LOCAL_COPY_HEADERS_TO         := $(common_header_export_path)
 LOCAL_COPY_HEADERS            := display_properties.h \
@@ -16,3 +17,4 @@ LOCAL_COPY_HEADERS            := display_properties.h \
                                  ../libqservice/IQClient.h
 
 include $(BUILD_COPY_HEADERS)
+endif
