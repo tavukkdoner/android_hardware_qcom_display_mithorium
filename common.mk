@@ -68,6 +68,7 @@ ifeq ($(TARGET_USES_GRALLOC1), true)
     common_flags += -DUSE_GRALLOC1
 endif
 
+ifeq ($(BUILD_BROKEN_USES_BUILD_COPY_HEADERS),true)
 common_includes := system/core/base/include
 CHECK_VERSION_LE = $(shell if [ $(1) -le $(2) ] ; then echo true ; else echo false ; fi)
 PLATFORM_SDK_NOUGAT = 25
@@ -90,6 +91,7 @@ endif
 endif
 
 common_header_export_path := qcom/display
+endif
 
 #Common libraries external to display HAL
 common_libs := liblog libutils libcutils libhardware
