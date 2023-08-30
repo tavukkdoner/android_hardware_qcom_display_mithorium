@@ -55,6 +55,7 @@ endif
 
 include $(BUILD_SHARED_LIBRARY)
 
+ifeq ($(BUILD_BROKEN_USES_BUILD_COPY_HEADERS),true)
 SDM_HEADER_PATH := ../../include
 include $(CLEAR_VARS)
 LOCAL_VENDOR_MODULE           := true
@@ -82,3 +83,4 @@ LOCAL_COPY_HEADERS             = $(SDM_HEADER_PATH)/private/color_interface.h \
                                  $(SDM_HEADER_PATH)/private/strategy_interface.h \
                                  $(SDM_HEADER_PATH)/private/dpps_control_interface.h
 include $(BUILD_COPY_HEADERS)
+endif
