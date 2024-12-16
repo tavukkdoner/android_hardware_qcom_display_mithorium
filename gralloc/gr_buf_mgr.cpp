@@ -409,7 +409,8 @@ static Error getComponentSizeAndOffset(int32_t format, PlaneLayoutComponent &com
       if (comp.type.value == android::gralloc4::PlaneLayoutComponentType_R.value) {
         comp.offsetInBits = 0;
       } else if (comp.type.value == android::gralloc4::PlaneLayoutComponentType_G.value &&
-                 format != HAL_PIXEL_FORMAT_R_8) {
+                 format != HAL_PIXEL_FORMAT_R_8 &&
+				 format != aidl::android::hardware::graphics::common::PixelFormat::R_8) {
         comp.offsetInBits = 8;
       } else {
         return Error::BAD_VALUE;
