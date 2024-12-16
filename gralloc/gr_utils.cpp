@@ -1845,6 +1845,10 @@ void GetDRMFormat(uint32_t format, uint32_t flags, uint32_t *drm_format,
     case HAL_PIXEL_FORMAT_YV12:
       *drm_format = DRM_FORMAT_YVU420;
       break;
+    case HAL_PIXEL_FORMAT_R_8:
+    case static_cast<uint32_t>(aidl::android::hardware::graphics::common::PixelFormat::R_8):
+      *drm_format = DRM_FORMAT_R8;
+      break;
     default:
       ALOGE("Unsupported format %d", format);
   }
