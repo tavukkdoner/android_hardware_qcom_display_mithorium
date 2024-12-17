@@ -38,6 +38,11 @@
 
 #define ASTC_BLOCK_SIZE 16
 
+#define HAL_PIXEL_FORMAT_R_8_1 0x38
+#define HAL_PIXEL_FORMAT_R_16_UINT_1 0x39
+#define HAL_PIXEL_FORMAT_RG_1616_UINT_1 0x3a
+#define HAL_PIXEL_FORMAT_RGBA_10101010_1 0x3b
+
 #ifndef COLOR_FMT_P010_UBWC
 #define COLOR_FMT_P010_UBWC 9
 #endif
@@ -89,7 +94,7 @@ bool IsUncompressedRGBFormat(int format) {
     case HAL_PIXEL_FORMAT_RGBA_5551:
     case HAL_PIXEL_FORMAT_RGBA_4444:
     case HAL_PIXEL_FORMAT_R_8:
-    case static_cast<int>(aidl::android::hardware::graphics::common::PixelFormat::R_8):
+    case HAL_PIXEL_FORMAT_R_8_1:
     case HAL_PIXEL_FORMAT_RG_88:
     case HAL_PIXEL_FORMAT_BGRX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
@@ -180,7 +185,7 @@ uint32_t GetBppForUncompressedRGB(int format) {
       bpp = 2;
       break;
     case HAL_PIXEL_FORMAT_R_8:
-    case static_cast<int>(aidl::android::hardware::graphics::common::PixelFormat::R_8):
+    case HAL_PIXEL_FORMAT_R_8_1:
       bpp = 1;
       break;
     default:
@@ -369,9 +374,9 @@ unsigned int GetSize(const BufferInfo &info, unsigned int alignedw, unsigned int
       case HAL_PIXEL_FORMAT_NV12_HEIF:
         size = VENUS_BUFFER_SIZE(COLOR_FMT_NV12_512, width, height);
         break;
-      case static_cast<int>(aidl::android::hardware::graphics::common::PixelFormat::RGBA_10101010):
-      case static_cast<int>(aidl::android::hardware::graphics::common::PixelFormat::RG_1616_UINT):
-      case static_cast<int>(aidl::android::hardware::graphics::common::PixelFormat::R_16_UINT):
+      case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+      case HAL_PIXEL_FORMAT_RG_1616_UINT_1:
+      case HAL_PIXEL_FORMAT_R_16_UINT_1:
         ALOGW("%s: Pixel format: 0x%x is not supported by gralloc", __FUNCTION__, format);
         return 0;
       default:ALOGE("%s: Unrecognized pixel format: 0x%x", __FUNCTION__, format);
@@ -1851,7 +1856,7 @@ void GetDRMFormat(uint32_t format, uint32_t flags, uint32_t *drm_format,
       *drm_format = DRM_FORMAT_YVU420;
       break;
     case HAL_PIXEL_FORMAT_R_8:
-    case static_cast<uint32_t>(aidl::android::hardware::graphics::common::PixelFormat::R_8):
+    case HAL_PIXEL_FORMAT_R_8_1:
       *drm_format = DRM_FORMAT_R8;
       break;
     default:

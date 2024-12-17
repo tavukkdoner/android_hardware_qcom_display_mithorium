@@ -31,7 +31,7 @@
 #define __GR_UTILS_H__
 
 #include <android/hardware/graphics/common/1.2/types.h>
-#include <aidl/android/hardware/graphics/common/PixelFormat.h>
+//#include <aidl/android/hardware/graphics/common/PixelFormat.h>
 #include "gralloc_priv.h"
 #include "qdMetaData.h"
 
