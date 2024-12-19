@@ -39,7 +39,10 @@
 #include "qdMetaData.h"
 #include "qd_utils.h"
 
-using PixelFormatAidl = aidl::android::hardware::graphics::common::PixelFormat;
+#define HAL_PIXEL_FORMAT_R_8_1 0x38
+#define HAL_PIXEL_FORMAT_R_16_UINT_1 0x39
+#define HAL_PIXEL_FORMAT_RG_1616_UINT_1 0x3a
+#define HAL_PIXEL_FORMAT_RGBA_10101010_1 0x3b
 
 namespace gralloc {
 
@@ -406,20 +409,20 @@ static Error getComponentSizeAndOffset(int32_t format, PlaneLayoutComponent &com
       break;
     case static_cast<int32_t>(HAL_PIXEL_FORMAT_R_8):
     case static_cast<int32_t>(HAL_PIXEL_FORMAT_RG_88):
-    case static_cast<int32_t>(PixelFormatAidl::R_8):
+    case static_cast<int32_t>(HAL_PIXEL_FORMAT_R_8_1):
       comp.sizeInBits = 8;
       if (comp.type.value == android::gralloc4::PlaneLayoutComponentType_R.value) {
         comp.offsetInBits = 0;
       } else if (comp.type.value == android::gralloc4::PlaneLayoutComponentType_G.value &&
                  format != HAL_PIXEL_FORMAT_R_8 &&
-				 format != PixelFormatAidl::R_8) {
+				 format != HAL_PIXEL_FORMAT_R_8_1) {
         comp.offsetInBits = 8;
       } else {
         return Error::BAD_VALUE;
       }
       break;
     case static_cast<int32_t>(HAL_PIXEL_FORMAT_RGBA_1010102):
-    case static_cast<int32_t>(PixelFormatAidl::RGBA_10101010):
+    case static_cast<int32_t>(HAL_PIXEL_FORMAT_RGBA_10101010_1):
     case static_cast<int32_t>(HAL_PIXEL_FORMAT_RGBX_1010102):
       if (comp.type.value == android::gralloc4::PlaneLayoutComponentType_R.value) {
         comp.sizeInBits = 10;
