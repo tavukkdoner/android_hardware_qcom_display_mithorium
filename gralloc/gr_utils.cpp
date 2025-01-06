@@ -98,7 +98,7 @@ bool IsUncompressedRGBFormat(int format) {
     case HAL_PIXEL_FORMAT_RG_88:
     case HAL_PIXEL_FORMAT_BGRX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_ARGB_2101010:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
     case HAL_PIXEL_FORMAT_XRGB_2101010:
@@ -165,7 +165,7 @@ uint32_t GetBppForUncompressedRGB(int format) {
     case HAL_PIXEL_FORMAT_BGRA_8888:
     case HAL_PIXEL_FORMAT_BGRX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_ARGB_2101010:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
     case HAL_PIXEL_FORMAT_XRGB_2101010:
@@ -376,7 +376,7 @@ unsigned int GetSize(const BufferInfo &info, unsigned int alignedw, unsigned int
       case HAL_PIXEL_FORMAT_NV12_HEIF:
         size = VENUS_BUFFER_SIZE(COLOR_FMT_NV12_512, width, height);
         break;
-      //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+      case HAL_PIXEL_FORMAT_RGBA_10101010_1:
       case HAL_PIXEL_FORMAT_RG_1616_UINT_1:
       case HAL_PIXEL_FORMAT_R_16_UINT_1:
         ALOGW("%s: Pixel format: 0x%x is not supported by gralloc", __FUNCTION__, format);
@@ -706,7 +706,7 @@ bool IsUBwcSupported(int format) {
     case HAL_PIXEL_FORMAT_NV12_ENCODEABLE:
     case HAL_PIXEL_FORMAT_YCbCr_420_SP_VENUS:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
     case HAL_PIXEL_FORMAT_DEPTH_16:
     case HAL_PIXEL_FORMAT_DEPTH_24:
@@ -859,7 +859,7 @@ unsigned int GetUBwcSize(int width, int height, int format, unsigned int aligned
     case HAL_PIXEL_FORMAT_RGBA_8888:
     case HAL_PIXEL_FORMAT_RGBX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
       bpp = GetBppForUncompressedRGB(format);
       size = alignedw * alignedh * bpp;
@@ -907,7 +907,7 @@ unsigned int GetRgbMetaSize(int format, uint32_t width, uint32_t height, uint64_
     case HAL_PIXEL_FORMAT_RGBA_8888:
     case HAL_PIXEL_FORMAT_RGBX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
     case HAL_PIXEL_FORMAT_RGBA_FP16:
       meta_size = GetRgbUBwcMetaBufferSize(width, height, bpp);
@@ -1132,7 +1132,7 @@ int GetBufferLayout(private_handle_t *hnd, uint32_t stride[4], uint32_t offset[4
     case HAL_PIXEL_FORMAT_RGBX_8888:
     case HAL_PIXEL_FORMAT_BGRX_8888:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_ARGB_2101010:
     case HAL_PIXEL_FORMAT_RGBX_1010102:
     case HAL_PIXEL_FORMAT_XRGB_2101010:
@@ -1713,7 +1713,7 @@ bool HasAlphaComponent(int32_t format) {
     case HAL_PIXEL_FORMAT_RGBA_5551:
     case HAL_PIXEL_FORMAT_RGBA_4444:
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
     case HAL_PIXEL_FORMAT_ARGB_2101010:
     case HAL_PIXEL_FORMAT_BGRA_1010102:
     case HAL_PIXEL_FORMAT_ABGR_2101010:
@@ -1784,7 +1784,7 @@ void GetDRMFormat(uint32_t format, uint32_t flags, uint32_t *drm_format,
         *drm_format_modifier = DRM_FORMAT_MOD_QCOM_COMPRESSED;
       break;
     case HAL_PIXEL_FORMAT_RGBA_1010102:
-    case HAL_PIXEL_FORMAT_RGBA_10101010_1:
+    //case HAL_PIXEL_FORMAT_RGBA_10101010_1:
       *drm_format = DRM_FORMAT_ABGR2101010;
       if (compressed)
         *drm_format_modifier = DRM_FORMAT_MOD_QCOM_COMPRESSED;
