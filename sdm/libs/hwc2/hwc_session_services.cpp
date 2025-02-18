@@ -30,7 +30,6 @@
 #include <core/buffer_allocator.h>
 #include <utils/debug.h>
 #include <sync/sync.h>
-#include <profiler.h>
 #include <errno.h>
 #include <math.h>
 
