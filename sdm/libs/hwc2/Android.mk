@@ -15,8 +15,7 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_CFLAGS                  := -Wno-missing-field-initializers -Wno-unused-parameter \
                                  -fcolor-diagnostics\
-                                 -DLOG_TAG=\"SDM\" $(common_flags) \
-                                 -I $(display_top)/sdm/libs/hwc
+                                 -DLOG_TAG=\"SDM\" $(common_flags)
 
 ifeq ($(TARGET_KERNEL_VERSION),$(filter $(TARGET_KERNEL_VERSION),4.14 4.19))
 LOCAL_CFLAGS += -DTARGET_MIN_KERNEL_4_14
@@ -51,18 +50,18 @@ LOCAL_SRC_FILES               := hwc_session.cpp \
                                  hwc_display.cpp \
                                  hwc_display_primary.cpp \
                                  hwc_display_external.cpp \
-                                 hwc_display_virtual.cpp \
                                  hwc_display_dummy.cpp \
-                                 ../hwc/hwc_debugger.cpp \
-                                 ../hwc/hwc_buffer_sync_handler.cpp \
+                                 hwc_display_external_test.cpp \
+                                 hwc_display_virtual.cpp \
+                                 hwc_debugger.cpp \
+                                 hwc_buffer_sync_handler.cpp \
                                  hwc_color_manager.cpp \
                                  hwc_layers.cpp \
                                  hwc_callbacks.cpp \
-                                 ../hwc/cpuhint.cpp \
-                                 ../hwc/hwc_socket_handler.cpp \
+                                 cpuhint.cpp \
                                  display_null.cpp \
                                  hwc_tonemapper.cpp \
-                                 hwc_display_external_test.cpp \
+                                 hwc_socket_handler.cpp \
                                  hwc_buffer_allocator.cpp
 
 ifeq ($(TARGET_HAS_WIDE_COLOR_DISPLAY), true)
