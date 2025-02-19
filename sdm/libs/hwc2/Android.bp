@@ -17,6 +17,9 @@ cc_library_shared {
     ] + select(soong_config_variable("qtidisplay", "wide_color"), {
         "true": ["-DFEATURE_WIDE_COLOR"],
         default: [],
+    }) + select(soong_config_variable("qtidisplay", "multi_display"), {
+        "true": ["-DEXCLUDES_MULTI_DISPLAY"],
+        default: [],
     }),
 
     shared_libs: [
