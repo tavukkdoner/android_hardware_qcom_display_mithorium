@@ -45,4 +45,3 @@ void CalcFps::Init() {
 void CalcFps::Fps() {
 }
 };//namespace qomutils
-#endif
