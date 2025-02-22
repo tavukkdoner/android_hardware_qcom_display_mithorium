@@ -17,6 +17,7 @@ cc_library_shared {
     vendor: true,
     header_libs: [
         "display_headers",
+        "qti_kernel_headers",
     ],
     include_dirs: [
         "system/memory/libion/include",
@@ -47,7 +48,7 @@ cc_library_shared {
     ],
 }
 
-# Gralloc module
+//Gralloc module
 target_board_platform_cc_library_shared {
     name: "gralloc.qcom",
     soong_config_variables: {
@@ -90,7 +91,7 @@ target_board_platform_cc_library_shared {
     ],
 }
 
-#libgrallocutils
+//libgrallocutils
 cc_library_shared {
     name: "libgrallocutils",
     defaults: ["display_defaults"],
@@ -130,7 +131,10 @@ cc_library_shared {
     defaults: ["display_defaults"],
     vendor: true,
     relative_install_path: "hw",
-    header_libs: ["display_headers"],
+    header_libs: [
+        "display_headers",
+        "qti_kernel_headers",
+    ],
     shared_libs: [
         "libhidlbase",
         "libqdMetaData",
@@ -165,7 +169,10 @@ cc_library_shared {
     },
     vendor: true,
     relative_install_path: "hw",
-    header_libs: ["display_headers"],
+    header_libs: [
+        "display_headers",
+        "qti_kernel_headers",
+    ],
     shared_libs: [
         "libhidlbase",
         "libhidltransport",
@@ -200,7 +207,10 @@ cc_binary {
     defaults: ["display_defaults"],
     vendor: true,
     relative_install_path: "hw",
-    header_libs: ["display_headers"],
+    header_libs: [
+        "display_headers",
+        "qti_kernel_headers",
+    ],
     shared_libs: [
         "libhidlbase",
         "libqdMetaData",
