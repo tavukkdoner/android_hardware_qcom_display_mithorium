@@ -70,6 +70,6 @@ cc_library_shared {
         "display_null.cpp",
         "hwc_tonemapper.cpp",
         "hwc_socket_handler.cpp",
-        "hwc_buffer_allocator.cpp
+        "hwc_buffer_allocator.cpp",
     ],
 }
