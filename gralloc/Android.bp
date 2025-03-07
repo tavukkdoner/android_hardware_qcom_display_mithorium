@@ -38,6 +38,7 @@ cc_library_shared {
     cflags: [
         "-DLOG_TAG=\"qdgralloc\"",
         "-D__QTI_DISPLAY_GRALLOC__",
+        "-DTARGET_USES_GRALLOC4",
         "-Wno-sign-conversion",
         "-Wno-unused-parameter",
     ],
@@ -229,7 +230,7 @@ cc_binary {
         "vendor.qti.hardware.display.mapperextensions@1.0",
         "vendor.qti.hardware.display.mapperextensions@1.1",
     ],
-    cflags: ["-DLOG_TAG=\"qdgralloc\""],
+    cflags: ["-DLOG_TAG=\"qdgralloc\"", "-DTARGET_USES_GRALLOC4"],
     srcs: [
         "QtiAllocator.cpp",
         "service.cpp",
