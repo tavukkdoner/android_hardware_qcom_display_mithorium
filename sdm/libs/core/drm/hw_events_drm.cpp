@@ -32,6 +32,7 @@
 #include <fcntl.h>
 #include <math.h>
 #include <pthread.h>
+#include <sched.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/prctl.h>
@@ -209,8 +210,9 @@ void *HWEventsDRM::DisplayEventHandler() {
   char data[kMaxStringLength]{};
 
   prctl(PR_SET_NAME, event_thread_name_.c_str(), 0, 0, 0);
-  struct sched_param param = {0};
-  param.sched_priority = 2;
+  struct sched_param param = { 
+          .sched_priority = 2, 
+  };
   if (sched_setscheduler(0, SCHED_FIFO, &param) != 0) {
     DLOGE("Couldn't set SCHED_FIFO: %d", errno);
   }
